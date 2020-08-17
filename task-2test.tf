@@ -87,8 +87,6 @@ output "myloc" {
 	value = aws_instance.ins1.availability_zone
 }
 
-/*----------------------------------------------------------------------------*/
-
 resource "aws_efs_file_system" "efs1" {
   creation_token = "my-product"
 
@@ -99,7 +97,6 @@ resource "aws_efs_file_system" "efs1" {
 
 
 resource "aws_efs_mount_target" "alpha" {
-  					#subnet_id = "subnet-97ea81db"to be checked and hardcoded
   file_system_id = "${aws_efs_file_system.efs1.id}"
   subnet_id = "${aws_subnet.alpha.id}"
   security_groups= ["sec_g"]
@@ -112,12 +109,6 @@ cidr_block = "172.31.48.0/20"
 
 }
 
-
-/*output "myefs1" {
-	value = ws_efs_file_system.efs1.id
-}
-*/
-/*----------------------------------------------------------------------------*/
 output "myy_ip" {
 	value = aws_instance.ins1.public_ip
 	}
@@ -230,6 +221,3 @@ provisioner "remote-exec" {
         ]
     }
 }
-
-
-#aws_instance.example.id 
